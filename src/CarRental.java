@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CarRental {
-     MySqlConnection mySqlConnection;
+    MySqlConnection mySqlConnection;
 
     public CarRental() {
         mySqlConnection = new MySqlConnection();
