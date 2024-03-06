@@ -20,7 +20,7 @@ public class CarRental {
             MenuChoice menuChoice = showMainMenu(); //forstår ikke den her linje.
             switch (menuChoice) {
                 case CREATE_CUSTOMER -> createCustomer();
-                case SHOW_ALL_CUSTOMERS -> showAllProfiles();
+                //case SHOW_ALL_CUSTOMERS -> showAllProfiles();
                 case SELECT_CUSTOMER -> selectCustomer();
                 case EDIT_CUSTOMER -> editCustomer();
                 case QUIT -> running = false;
@@ -70,12 +70,15 @@ public class CarRental {
         int zipCode = in.nextInt();
         System.out.println("City: ");
         String city = in.nextLine();
+        in.nextLine();
         System.out.println("Phone Number: ");
         int phoneNumber = in.nextInt();
         System.out.print("Email: ");
         String email = in.nextLine();
+        in.nextLine();
         System.out.println("License Number: ");
         int licenseNumber = in.nextInt();
+        in.nextLine();
         System.out.print("License issue date: ");
         String dateString = in.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
