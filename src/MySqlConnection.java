@@ -10,11 +10,6 @@ public class MySqlConnection {
     public MySqlConnection() {
         createConnection();
     }
-
-    public static void main(String[] args) {
-        MySqlConnection test = new MySqlConnection();
-        test.createConnection();
-    }
     private void createConnection() {
         if (connection != null)
             return; // If connection already created, just return that to ensure singleton
@@ -80,5 +75,4 @@ public class MySqlConnection {
         }
         return customer;
     }
-
 }
