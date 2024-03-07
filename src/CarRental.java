@@ -175,7 +175,7 @@ public class CarRental {
     }
     public void callCreateCar() {
         CarCategory carCategoryID = CarCategory.setCarCategoryID();
-        Car car = CarCRUD.createCar(); // profile kører userTypesProfile() som returnerer en profile ?
+        Car car = CarCRUD.createCar();
         mySqlConnection.addCar(carCategoryID, car);
 
     }

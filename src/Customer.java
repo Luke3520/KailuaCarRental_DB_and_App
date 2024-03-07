@@ -1,3 +1,5 @@
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 
 public class Customer {
@@ -33,6 +35,15 @@ public class Customer {
         this.licenseIssueDate = licenseIssueDate;
     }
 
+   /*public void findCityInDB() {
+       String query = "select * FROM customer INNER JOIN zipcode_city ON Customer.Zipcode = zipcode_city.zipcode;";
+       try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+           preparedStatement.setInt(1, customerId);
+           ResultSet rs = preparedStatement.executeQuery();
+           if (rs.next()) {
+               String city = rs.getString("City");
+           }
+*/
     public void setName(String name) {
         this.name = name;
     }

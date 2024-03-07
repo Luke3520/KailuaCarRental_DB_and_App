@@ -33,16 +33,15 @@ public class MySqlConnection {
     }
     public void addCustomer(Customer customer) {
         try {
-            String query = "INSERT INTO customer (Name, Address, Zipcode, City, Mobile_phone, Email, License_Number, License_Issue_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO customer (Name, Address, Zipcode, Mobile_phone, Email, License_Number, License_Issue_Date) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, customer.getName());
             preparedStatement.setString(2, customer.getAddress());
             preparedStatement.setInt(3, customer.getZipCode());
-            preparedStatement.setString(4, customer.getCity());
-            preparedStatement.setInt(5, customer.getPhoneNumber());
-            preparedStatement.setString(6, customer.getEmail());
-            preparedStatement.setInt(7, customer.getLicenseNumber());
-            preparedStatement.setDate(8, Date.valueOf(customer.getLicenseIssueDate()));
+            preparedStatement.setInt(4, customer.getPhoneNumber());
+            preparedStatement.setString(5, customer.getEmail());
+            preparedStatement.setInt(6, customer.getLicenseNumber());
+            preparedStatement.setDate(7, Date.valueOf(customer.getLicenseIssueDate()));
 
             preparedStatement.executeUpdate();
 
@@ -84,7 +83,7 @@ public class MySqlConnection {
                 int licenseNumber = rs.getInt("License_Number");
                 String email = rs.getString("Email");
                 LocalDate licenseIssueDate = rs.getDate("License_Issue_Date").toLocalDate();
-                customer = new Customer(customerIdFromDB, name, address, zipCode, city, phoneNumber, email, licenseNumber, licenseIssueDate);
+                customer = new Customer(customerIdFromDB, name, address, zipCode, phoneNumber, email, licenseNumber, licenseIssueDate);
             }
         } catch (SQLException e) {
             System.out.println("EXCEPTION: " + e.getMessage());
@@ -109,7 +108,7 @@ public class MySqlConnection {
                 String email = rs.getString("Email");
                 LocalDate licenseIssueDate;
                 licenseIssueDate = rs.getDate("License_Issue_Date").toLocalDate();
-                Customer customer = new Customer(customerIdFromDB, name, address, zipCode, city, phoneNumber, email, licenseNumber, licenseIssueDate);
+                Customer customer = new Customer(customerIdFromDB, name, address, zipCode, phoneNumber, email, licenseNumber, licenseIssueDate);
                 customers.add(customer);
             }
         } catch (SQLException e) {
@@ -119,17 +118,16 @@ public class MySqlConnection {
     }
     public void updateCustomer(Customer customer) {
         try {
-            String query = "UPDATE customer SET Name = ?, Address = ?, Zipcode = ?, City = ?, Mobile_phone = ?, Email = ?, License_Number = ?, License_Issue_Date = ? WHERE ID = ?";
+            String query = "UPDATE customer SET Name = ?, Address = ?, Zipcode = ?, Mobile_phone = ?, Email = ?, License_Number = ?, License_Issue_Date = ? WHERE ID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, customer.getName());
             preparedStatement.setString(2, customer.getAddress());
             preparedStatement.setInt(3, customer.getZipCode());
-            preparedStatement.setString(4, customer.getCity());
-            preparedStatement.setInt(5, customer.getPhoneNumber());
-            preparedStatement.setString(6, customer.getEmail());
-            preparedStatement.setInt(7, customer.getLicenseNumber());
-            preparedStatement.setDate(8, Date.valueOf(customer.getLicenseIssueDate()));
-            preparedStatement.setInt(9, customer.getCustomerID());
+            preparedStatement.setInt(4, customer.getPhoneNumber());
+            preparedStatement.setString(5, customer.getEmail());
+            preparedStatement.setInt(6, customer.getLicenseNumber());
+            preparedStatement.setDate(7, Date.valueOf(customer.getLicenseIssueDate()));
+            preparedStatement.setInt(8, customer.getCustomerID());
 
             preparedStatement.executeUpdate();
 
