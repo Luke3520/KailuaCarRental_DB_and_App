@@ -11,27 +11,22 @@ public class Customer {
     private int licenseNumber;
     private LocalDate licenseIssueDate;
 
-    public Customer() {
 
-    }
-
-    public Customer(int customerID, String name, String address, int zipCode, String city, int phoneNumber, String email, int licenseNumber, LocalDate licenseIssueDate) {
+    public Customer(int customerID, String name, String address, int zipCode, int phoneNumber, String email, int licenseNumber, LocalDate licenseIssueDate) {
         this.customerID = customerID;
         this.name = name;
         this.address = address;
         this.zipCode = zipCode;
-        this.city = city;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.licenseNumber = licenseNumber;
         this.licenseIssueDate = licenseIssueDate;
     }
 
-    public Customer(String name, String address, int zipCode, String city, int phoneNumber, String email, int licenseNumber, LocalDate licenseIssueDate) {
+    public Customer(String name, String address, int zipCode, int phoneNumber, String email, int licenseNumber, LocalDate licenseIssueDate) {
         this.name = name;
         this.address = address;
         this.zipCode = zipCode;
-        this.city = city;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.licenseNumber = licenseNumber;

@@ -102,8 +102,6 @@ public class CarRental {
         System.out.print("Zipcode: ");
         int zipCode = in.nextInt();
         in.nextLine();
-        System.out.print("City: ");
-        String city = in.nextLine();
         System.out.print("Phone Number: ");
         int phoneNumber = in.nextInt();
         in.nextLine();
@@ -116,7 +114,7 @@ public class CarRental {
         String dateString = in.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate licenseIssueDate = LocalDate.parse(dateString, formatter);
-        Customer customer = new Customer(fullname, address, zipCode, city, phoneNumber, email, licenseNumber, licenseIssueDate);
+        Customer customer = new Customer(fullname, address, zipCode, phoneNumber, email, licenseNumber, licenseIssueDate);
         return customer;
     }
 
@@ -136,11 +134,10 @@ public class CarRental {
                 "1. Name\n" +
                 "2. Adress\n" +
                 "3. Zipcode\n" +
-                "4. City\n" +
-                "5. Phone number\n" +
-                "6. E-mail\n" +
-                "7. License number\n" +
-                "8. License issue date");
+                "4. Phone number\n" +
+                "5. E-mail\n" +
+                "6. License number\n" +
+                "7. License issue date");
         char userIn = in.nextLine().toLowerCase().charAt(0);
         switch (userIn) {
             case '1' -> {
@@ -156,22 +153,18 @@ public class CarRental {
                 customer.setZipCode(in.nextInt());
             }
             case '4' -> {
-                System.out.println("Enter new city");
-                customer.setCity(in.nextLine());
-            }
-            case '5' -> {
                 System.out.println("Enter new phone number");
                 customer.setPhoneNumber(in.nextInt());
             }
-            case '6' -> {
+            case '5' -> {
                 System.out.println("Enter new E-mail");
                 customer.setEmail(in.nextLine());
             }
-            case '7' -> {
+            case '6' -> {
                 System.out.println("Enter new license number");
                 customer.setLicenseNumber(in.nextInt());
             }
-            case '8' -> {
+            case '7' -> {
                 System.out.println("Enter new license issue date (use format date-month-year)");
                 String newDate = in.nextLine();
                 LocalDate licenseIssueDate = LocalDate.parse(newDate);
