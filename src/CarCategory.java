@@ -19,5 +19,4 @@ public class CarCategory {
         CarCategory carCategoryID = new CarCategory(userInput);
         return carCategoryID;
     }
-
 }

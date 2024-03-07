@@ -8,19 +8,8 @@ public class Car {
     private int registrationYYYYMM;
     private int mileage;
 
-
-    public Car(int carID, int carCategoryID, String brand, String model, String typeOfFuel, String licensePlate, int registrationYYYYMM, int mileage) {
-        this.carID = carID;
+    public Car(int carCategoryID, String brand, String model, String typeOfFuel, String licensePlate, int registrationYYYYMM, int mileage) {
         this.carCategoryID = carCategoryID;
-        this.brand = brand;
-        this.model = model;
-        this.typeOfFuel = typeOfFuel;
-        this.licensePlate = licensePlate;
-        this.registrationYYYYMM = registrationYYYYMM;
-        this.mileage = mileage;
-    }
-
-    public Car(String brand, String model, String typeOfFuel, String licensePlate, int registrationYYYYMM, int mileage) {
         this.brand = brand;
         this.model = model;
         this.typeOfFuel = typeOfFuel;
@@ -75,6 +64,9 @@ public class Car {
 
     public void setMileage(int mileage) {
         this.mileage = mileage;
+    }
+    public int getCarCategoryID() {
+        return carCategoryID;
     }
 }
 

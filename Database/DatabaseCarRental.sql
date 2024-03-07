@@ -683,7 +683,7 @@ SELECT
     Car_Category.Type AS CarCategory,
     Car.Registration_YYYY_MM AS Car_Registration_Year,
     Car.License_Plate AS License_Plate,
-    Car.CarMileage AS CarMileage,
+    Car.Mileage AS Mileage,
     Contract.MaxKm AS MaxKm,
     Contract.FromDateAndTime AS FromDateAndTime,
     Contract.ToDateAndTime AS ToDateAndTime
