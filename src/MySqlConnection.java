@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class MySqlConnection {
     private String database = "jdbc:mysql://localhost:3306/CarRental";

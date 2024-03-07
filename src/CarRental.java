@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class CarRental {
     MySqlConnection mySqlConnection;
@@ -17,12 +18,14 @@ public class CarRental {
         boolean running = true;
 
         while (running) {
-            MenuChoice menuChoice = showMainMenu(); //forstår ikke den her linje.
+            MenuChoice menuChoice = showMainMenu();
             switch (menuChoice) {
                 case CREATE_CUSTOMER -> createCustomer();
                 case SHOW_ALL_CUSTOMERS -> showAllProfiles();
                 case SELECT_CUSTOMER -> selectCustomer();
                 case EDIT_CUSTOMER -> editCustomer();
+                case CREATE_CAR -> callCreateCar();
+                case CREATE_RENTAL_CONTRACT -> System.out.println("temporary");
                 case QUIT -> running = false;
             }
         }
@@ -82,7 +85,7 @@ public class CarRental {
     }
 
     private void createCustomer() {
-        Customer customer = userTypesCustomer(); // profile kører userTypesProfile() som returnerer en profile ?
+        Customer customer = userTypesCustomer();
         mySqlConnection.addCustomer(customer);
     }
 
@@ -157,7 +160,7 @@ public class CarRental {
                 customer.setCity(in.nextLine());
             }
             case '5' -> {
-                System.out.println("Enter new phonenumber");
+                System.out.println("Enter new phone number");
                 customer.setPhoneNumber(in.nextInt());
             }
             case '6' -> {

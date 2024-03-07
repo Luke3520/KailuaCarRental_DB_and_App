@@ -9,7 +9,7 @@ public class Customer {
     private int phoneNumber;
     private String email;
     private int licenseNumber;
-    private LocalDate LicenseIssueDate;
+    private LocalDate licenseIssueDate;
 
     public Customer() {
 
@@ -24,7 +24,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.licenseNumber = licenseNumber;
-        LicenseIssueDate = licenseIssueDate;
+        this.licenseIssueDate = licenseIssueDate;
     }
 
     public Customer(String name, String address, int zipCode, String city, int phoneNumber, String email, int licenseNumber, LocalDate licenseIssueDate) {
@@ -35,7 +35,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.licenseNumber = licenseNumber;
-        LicenseIssueDate = licenseIssueDate;
+        this.licenseIssueDate = licenseIssueDate;
     }
 
     public void setName(String name) {
@@ -67,42 +67,55 @@ public class Customer {
     }
 
     public void setLicenseIssueDate(LocalDate licenseIssueDate) {
-        LicenseIssueDate = licenseIssueDate;
+        this.licenseIssueDate = licenseIssueDate;
     }
 
     public int getCustomerID() {
-             return customerID;
-         }
+        return customerID;
+    }
 
-         public String getName() {
-             return name;
-         }
+    public String getName() {
+        return name;
+    }
 
-         public String getAddress() {
-             return address;
-         }
+    public String getAddress() {
+        return address;
+    }
 
-         public int getZipCode() {
-             return zipCode;
-         }
+    public int getZipCode() {
+        return zipCode;
+    }
 
-         public String getCity() {
-             return city;
-         }
+    public String getCity() {
+        return city;
+    }
 
-         public int getPhoneNumber() {
-             return phoneNumber;
-         }
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
 
-         public String getEmail() {
-             return email;
-         }
+    public String getEmail() {
+        return email;
+    }
 
-         public int getLicenseNumber() {
-             return licenseNumber;
-         }
+    public int getLicenseNumber() {
+        return licenseNumber;
+    }
 
-         public LocalDate getLicenseIssueDate() {
-             return LicenseIssueDate;
-         }
+    public LocalDate getLicenseIssueDate() {
+        return licenseIssueDate;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%5d. %-20s " +
+                        "| Address: %-25s " +
+                        "| ZipCode: %-10d " +
+                        "| City: %-15s " +
+                        "| PhoneNumber: %-15d " +
+                        "| Email: %-30s " +
+                        "| LicenseNumber: %-15d " +
+                        "| License Issue Date: %s",
+                customerID, name, address, zipCode, city, phoneNumber, email, licenseNumber, licenseIssueDate);
+    }
 }
