@@ -180,4 +180,10 @@ public class CarRental {
         }
         mySqlConnection.updateCustomer(customer);
     }
+    public void callCreateCar() {
+        CarCategory carCategoryID = CarCategory.setCarCategoryID();
+        Car car = CarCRUD.createCar(); // profile kører userTypesProfile() som returnerer en profile ?
+        mySqlConnection.addCar(carCategoryID, car);
+
+    }
 }
