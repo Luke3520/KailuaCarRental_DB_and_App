@@ -3,5 +3,7 @@ public enum MenuChoice {
     SHOW_ALL_CUSTOMERS,
     SELECT_CUSTOMER,
     EDIT_CUSTOMER,
+    CREATE_CAR,
+    CREATE_RENTAL_CONTRACT,
     QUIT
 }

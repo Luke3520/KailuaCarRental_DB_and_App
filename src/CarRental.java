@@ -20,7 +20,7 @@ public class CarRental {
             MenuChoice menuChoice = showMainMenu(); //forstår ikke den her linje.
             switch (menuChoice) {
                 case CREATE_CUSTOMER -> createCustomer();
-                //case SHOW_ALL_CUSTOMERS -> showAllProfiles();
+                case SHOW_ALL_CUSTOMERS -> showAllProfiles();
                 case SELECT_CUSTOMER -> selectCustomer();
                 case EDIT_CUSTOMER -> editCustomer();
                 case QUIT -> running = false;
@@ -31,24 +31,54 @@ public class CarRental {
 
     private MenuChoice showMainMenu() {
         Scanner in = new Scanner(System.in);
-
-        System.out.println("\nMAIN MENU\n" +
-                "1. Create customer\n" +
-                "2. Show all customers\n" +
-                "3. Select customer\n" +
-                "4. Edit customer\n" +
-                "Q. Quit\n");
-
-        char choice = in.nextLine().toLowerCase().charAt(0);
         MenuChoice menuChoice = null;
-        switch (choice) {
-            case '1' -> menuChoice = MenuChoice.CREATE_CUSTOMER;
-            case '2' -> menuChoice = MenuChoice.SHOW_ALL_CUSTOMERS;
-            case '3' -> menuChoice = MenuChoice.SELECT_CUSTOMER;
-            case '4' -> menuChoice = MenuChoice.EDIT_CUSTOMER;
-            case 'q' -> menuChoice = MenuChoice.QUIT;
+        boolean validChoice = false;
+
+        while (!validChoice) {
+            System.out.print("\nMAIN MENU\n" +
+                    "1. Create customer\n" +
+                    "2. Show all customers\n" +
+                    "3. Select customer\n" +
+                    "4. Edit customer\n" +
+                    "5. Create car\n" +
+                    "6. Create rental contract\n" +
+                    "Q. Quit\n");
+
+            char choice = in.nextLine().toLowerCase().charAt(0);
+
+            switch (choice) {
+                case '1' -> {
+                    menuChoice = MenuChoice.CREATE_CUSTOMER; validChoice = true;
+                }
+                case '2' -> {
+                    menuChoice = MenuChoice.SHOW_ALL_CUSTOMERS; validChoice = true;
+                }
+                case '3' -> {
+                    menuChoice = MenuChoice.SELECT_CUSTOMER; validChoice = true;
+                }
+                case '4' -> {
+                    menuChoice = MenuChoice.EDIT_CUSTOMER; validChoice = true;
+                }
+                case '5' -> {
+                    menuChoice= MenuChoice.CREATE_CAR; validChoice = true;
+                }
+                case '6' -> {
+                    menuChoice= MenuChoice.CREATE_RENTAL_CONTRACT; validChoice = true;
+                }
+                case 'q' -> {
+                    menuChoice = MenuChoice.QUIT; validChoice = true;
+                }
+                default -> System.out.println("Invalid choice. Please try again.");
+            }
         }
         return menuChoice;
+    }
+
+    private void showAllProfiles() {
+        ArrayList<Customer> customers = mySqlConnection.getAllCustomers();
+        for (Customer customer : customers) {
+            System.out.println(customer);
+        }
     }
 
     private void createCustomer() {
@@ -89,7 +119,7 @@ public class CarRental {
 
     private Customer selectCustomer() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter profile id: ");
+        System.out.println("Enter profile ID: ");
         int customerId = in.nextInt();
         Customer customer = mySqlConnection.getCustomer(customerId);
         System.out.println(customer);
@@ -145,5 +175,6 @@ public class CarRental {
                 customer.setLicenseIssueDate(licenseIssueDate);
             }
         }
+        mySqlConnection.updateCustomer(customer);
     }
 }
